@@ -1,0 +1,23 @@
+# config/database.yml
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("DB_POOL") { 5 } %>
+  host: <%= ENV.fetch("DB_HOST") { "localhost" } %>
+  username: <%= ENV.fetch("DB_USER") { "your_username" } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { "your_password" } %>
+
+development:
+  <<: *default
+  database: learning_paths_dev
+
+test:
+  <<: *default
+  database: learning_paths_test
+
+production:
+  <<: *default
+  database: learning_paths_prod
+  username: your_production_username
+  password: your_production_password
